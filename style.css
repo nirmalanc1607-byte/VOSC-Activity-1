@@ -1,0 +1,536 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   MAIN BACKGROUND
+   ========================= */
+
+body {
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(40, 70, 140, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(120, 30, 150, 0.18), transparent 35%),
+        #080b12;
+
+    color: white;
+
+    position: relative;
+}
+
+
+/* =========================
+   FUTURISTIC FLOOR GRID
+   ========================= */
+
+body::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -100px;
+
+    height: 300px;
+
+    background:
+        linear-gradient(rgba(110, 70, 220, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(110, 70, 220, 0.12) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    transform: perspective(300px) rotateX(55deg);
+
+    transform-origin: bottom;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   BACKGROUND DECORATIONS
+   ========================= */
+
+.decor {
+    position: absolute;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    opacity: 0.35;
+}
+
+
+/* Large X */
+
+.decor-x {
+    left: 7%;
+    top: 18%;
+
+    font-size: 90px;
+    font-weight: bold;
+
+    color: #397cff;
+
+    text-shadow:
+        0 0 10px #397cff,
+        0 0 25px rgba(57, 124, 255, 0.5);
+
+    transform: rotate(-15deg);
+}
+
+
+/* Large O */
+
+.decor-o {
+    right: 8%;
+    bottom: 15%;
+
+    font-size: 100px;
+    font-weight: bold;
+
+    color: #ff4568;
+
+    text-shadow:
+        0 0 10px #ff4568,
+        0 0 25px rgba(255, 69, 104, 0.5);
+
+    transform: rotate(12deg);
+}
+
+
+/* Stars */
+
+.star-one {
+    left: 18%;
+    bottom: 18%;
+
+    font-size: 25px;
+
+    color: #b58cff;
+}
+
+.star-two {
+    right: 17%;
+    top: 17%;
+
+    font-size: 20px;
+
+    color: #8eb5ff;
+}
+
+
+/* Small X */
+
+.small-x {
+    right: 24%;
+    top: 9%;
+
+    font-size: 35px;
+
+    color: #397cff;
+
+    opacity: 0.25;
+}
+
+
+/* Small O */
+
+.small-o {
+    left: 23%;
+    bottom: 10%;
+
+    font-size: 35px;
+
+    color: #ff4568;
+
+    opacity: 0.25;
+}
+
+
+/* =========================
+   GAME CONTAINER
+   ========================= */
+
+.game-container {
+    position: relative;
+    z-index: 2;
+
+    width: 440px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background: rgba(17, 21, 29, 0.96);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(72, 76, 150, 0.12);
+}
+
+
+/* =========================
+   TITLE
+   ========================= */
+
+h1 {
+    font-size: 48px;
+
+    font-weight: 900;
+
+    letter-spacing: 6px;
+
+    color: #f4f0e8;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 12px rgba(240, 235, 220, 0.18);
+}
+
+
+/* Small subtitle */
+
+.subtitle {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #7f8792;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================
+   TURN MESSAGE
+   ========================= */
+
+#status {
+    font-size: 16px;
+
+    letter-spacing: 1px;
+
+    color: #cbd0d8;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   SCOREBOARD
+   ========================= */
+
+.scoreboard {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    background: #10141b;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 14px;
+
+    margin-bottom: 24px;
+}
+
+
+.scoreboard h3 {
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #8b929c;
+}
+
+
+.scoreboard p {
+    font-size: 30px;
+
+    font-weight: bold;
+
+    margin-top: 5px;
+
+    color: #f4f0e8;
+}
+
+
+/* X score */
+
+.scoreboard div:first-child p {
+    color: #66aaff;
+
+    text-shadow:
+        0 0 8px rgba(70, 140, 255, 0.5);
+}
+
+
+/* O score */
+
+.scoreboard div:last-child p {
+    color: #ff6688;
+
+    text-shadow:
+        0 0 8px rgba(255, 70, 100, 0.5);
+}
+
+
+/* Divider */
+
+.score-divider {
+    height: 35px;
+
+    width: 1px;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================
+   BOARD
+   ========================= */
+
+.board {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 2px;
+
+    width: 330px;
+    height: 330px;
+
+    margin: 20px auto;
+
+    padding: 5px;
+
+    background: #080a0f;
+
+    border: 2px solid #7255d9;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 8px rgba(114, 85, 217, 0.5),
+        0 0 25px rgba(114, 85, 217, 0.15);
+}
+
+
+/* =========================
+   CELLS
+   ========================= */
+
+
+
+.cell {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 0;
+
+    background: #10141c;
+
+    border: 1px solid rgba(114, 85, 217, 0.3);
+
+    font-size: 58px;
+
+    font-weight: 900;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+.cell:hover {
+    background: #171d28;
+
+    
+}
+
+
+/* =========================
+   NEON X
+   ========================= */
+
+.cell.x {
+    color: #66aaff;
+
+    text-shadow:
+        0 0 5px #66aaff,
+        0 0 12px #3388ff,
+        0 0 25px #2266ff,
+        0 0 40px rgba(34, 102, 255, 0.7);
+}
+
+
+/* =========================
+   NEON O
+   ========================= */
+
+.cell.o {
+    color: #ff6688;
+
+    text-shadow:
+        0 0 5px #ff6688,
+        0 0 12px #ff3355,
+        0 0 25px #ff2244,
+        0 0 40px rgba(255, 34, 68, 0.7);
+}
+
+
+/* =========================
+   WINNING CELLS
+   ========================= */
+
+.winner {
+    animation: winnerAnimation 0.5s infinite alternate;
+     
+}
+
+
+@keyframes winnerAnimation {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.07);
+    }
+
+}
+
+
+/* =========================
+   RESULT MESSAGE
+   ========================= */
+
+#resultMessage {
+    min-height: 40px;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: #f4f0e8;
+
+    margin-top: 8px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   PLAY AGAIN BUTTON
+   ========================= */
+
+#playAgainButton {
+    display: none;
+
+    padding: 12px 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 8px;
+
+    background: #f4f0e8;
+
+    color: #101217;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+#playAgainButton:hover {
+    background: white;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 500px) {
+
+    .game-container {
+        width: 92%;
+
+        padding: 25px;
+    }
+
+
+    h1 {
+        font-size: 34px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .board {
+        width: 280px;
+
+        height: 280px;
+    }
+
+
+    .cell {
+        font-size: 45px;
+    }
+
+
+    .decor-x {
+        left: 2%;
+
+        font-size: 60px;
+    }
+
+
+    .decor-o {
+        right: 2%;
+
+        font-size: 65px;
+    }
+
+}

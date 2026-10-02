@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tic-Tac-Toe | VOSC Activity 1</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background decorations -->
+    <div class="decor decor-x">X</div>
+    <div class="decor decor-o">O</div>
+    <div class="decor star-one">✦</div>
+    <div class="decor star-two">✦</div>
+    <div class="decor small-x">×</div>
+    <div class="decor small-o">○</div>
+
+    <div class="game-container">
+
+        <h1>TIC-TAC-TOE</h1>
+
+        <p class="subtitle">2 Players Game</p>
+
+        <p id="status">Player X's Turn</p>
+
+
+        <div class="scoreboard">
+
+            <div>
+                <h3>PLAYER X</h3>
+                <p id="scoreX">0</p>
+            </div>
+
+            <div class="score-divider"></div>
+
+            <div>
+                <h3>PLAYER O</h3>
+                <p id="scoreO">0</p>
+            </div>
+
+        </div>
+
+
+        <div class="board">
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+        </div>
+
+
+        <div id="resultMessage"></div>
+
+        <button id="playAgainButton">PLAY AGAIN</button>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
